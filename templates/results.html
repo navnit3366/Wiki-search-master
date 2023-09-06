@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+{% block title %}
+Results
+{% endblock title %}
+{% block content %}
+<div class="main">
+    <div class="logo">
+        <img src="{{ url_for('static', filename='images/Wikipedia-logo.png') }}" height="55px"/></div>
+    <div class="search">
+        <form action="{{ url_for('searchit') }} " method="POST">
+            <input type="result-input" name="search" title="Search" /><img class="mag" src="{{ url_for('static', filename='images/search-icon.png') }}"/>
+            <input type="submit" value="Search" hidden>
+        </form>
+    </div>
+</div>
+
+
+    {#
+        <ul>
+        {% for docid in results %}
+            <li>
+                <a href="{{ url_for('showpages', docid=docid) }}">{{ documents[docid]['title'] }}
+            </li>
+        {% else %}
+            <li>No pages so far</li>
+        {% endfor %}
+        </ul>
+    #}
+    
+    <div class="flex-container">
+        {% for docid in results %}
+            <div >
+                <div class="results">
+                    <div class="ind">
+                        <a class="link" href="{{ url_for('showpages', docid=docid) }}">{{ documents[docid]['title'] }}</a><br/>
+                        <a class="url" href="{{ url_for('showpages', docid=docid) }}">{{ url_for('showpages', docid=docid) }} &#9662;</a>
+                    <p class="desc">{{ texts[docid][:150] }}  ...</p>
+                </div>
+            </div>
+        {% else %}
+                <div>No pages so far</div>
+        {% endfor %}
+    </div>
+    
+
+
+{% endblock content %}

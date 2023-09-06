@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="author" content="Mehar Madnani">
+    <meta name="description" content="My Practice Search Engine">
+    <title>{% block title %}
+        {% endblock title %}
+    </title>
+    <link href={{ url_for('static' , filename='styles/style.css') }} rel="stylesheet">
+</head>
+
+<body>
+    <div>
+        {% block content %}
+        {% endblock content %}
+    </div>
+</body>
+</html>
